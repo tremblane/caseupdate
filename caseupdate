@@ -1,0 +1,2 @@
+#!/bin/bash
+mutt -e "my_hdr Reply-To: itsm-prd@cisco.com" -s "$2" -b itsm-prd@cisco.com $1@cisco.com
