@@ -1,4 +1,9 @@
 #!/bin/bash
 #
 # Usage: caseupdate userid case#
-mutt -e "my_hdr Reply-To: itsm-prd@cisco.com" -s "Incident $2" -b itsm-prd@cisco.com -i<(echo "$2 - ")   $1@cisco.com
+if [ -z "$3" ]; then
+	mutt -e "my_hdr Reply-To: itsm-prd@cisco.com" -s "Incident $2" -b itsm-prd@cisco.com -i<(echo "$2 - ")   $1@cisco.com
+	exit
+fi
+
+mutt -e "my_hdr Reply-To: itsm-prd@cisco.com" -s "Incident $2" -b itsm-prd@cisco.com -i<(echo "$2 - "; echo; cat $3)  $1@cisco.com
